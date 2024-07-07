@@ -30,7 +30,7 @@ const setupRoutes = async (app) => {
 
   await asyncHandler(loadRoutes)(null, null, (err) => {
     if (err) {
-      console.error('Error setting up routes:', err);
+      console.error('\nError setting up routes:\n', err);
       throw err;  // This will be caught by the error handler middleware
     }
   });

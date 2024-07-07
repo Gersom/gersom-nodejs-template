@@ -7,8 +7,8 @@ const addStaticMethods = (scheme) => {
     return this.findById(_id);
   });
 
-  scheme.static('findOneData', function (key = "name", value) {
-    return this.findOne({ [key]: value });
+  scheme.static('findOneData', function (query = {}) {
+    return this.findOne(query);
   });
 
   scheme.static('dataExist', function () {

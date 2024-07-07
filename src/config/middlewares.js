@@ -1,26 +1,29 @@
-// const cors = require("cors")
-const express = require("express");
-const morgan = require("morgan");
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
 
-// MIDDLEWARES
 const middlewares = (app) => {
-  app.use((_, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Credentials", "true");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    res.header(
-      "Access-Control-Allow-Methods",
-      "GET, POST, OPTIONS, PUT, DELETE"
-    );
-    next();
-  });
-  // app.use(cors())
+  if (process.env.NODE_ENV === 'development') {
+    // Logging con Morgan
+    const morgan = require('morgan');
+    app.use(morgan('dev'));
+  }
 
-  app.use(morgan("dev"));
+  // Parsing JSON y url-encoded data
   app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+
+  // CORS configuration
+  app.use(cors({
+    origin: process.env.NODE_ENV === 'production' ? process.env.ALLOWED_ORIGINS : '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
+    credentials: true
+  }));
+
+  // Additional security
+  app.use(helmet());
 };
 
 module.exports = middlewares;

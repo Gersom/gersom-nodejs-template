@@ -1,15 +1,14 @@
 const DB_ENGINE = process.env.DB_ENGINE
-let dbConnect = {}
-
+let configDB = {}
 switch (DB_ENGINE) {
   case "mongodb":
-    dbConnect = require("./mongodb")
+    configDB = require("./mongodb")
     break
   case "postgresql":
-    dbConnect = require("./postgresql")
+    configDB = require("./postgresql")
     break
   default:
     throw new Error("Environment variable 'DB_ENGINE' is not valid.")
 }
 
-module.exports = dbConnect
+module.exports = configDB

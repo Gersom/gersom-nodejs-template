@@ -25,5 +25,5 @@ const dbConnectPostgresql = async () => {
 }
 
 module.exports = {
-  sequelize, dbConnect: dbConnectPostgresql
+  sequelize, connectDB: dbConnectPostgresql
 }

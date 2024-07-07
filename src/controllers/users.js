@@ -11,7 +11,7 @@ const getAllUsersController = async (query = {}) => {
 };
 
 const getUserController = async (id) => {
-  const user = await UserModel.findOneData(id);
+  const user = await UserModel.findDataById(id);
   if (!user) {
     throw new NotFoundError(`User with id ${id} not found`);
   }

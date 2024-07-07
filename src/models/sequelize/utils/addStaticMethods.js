@@ -5,9 +5,9 @@ const addStaticMethods = (model) => {
   model['findDataById'] = (id) => {
     return model.findByPk(id)
   }
-  model['findOneData'] = async (key= "name", value) => {
+  model['findOneData'] = async (query) => {
     const data = await model.findOne({
-      where: { [key]: value }
+      where: query
     })
     return data ? data.toJSON() : data
   }
