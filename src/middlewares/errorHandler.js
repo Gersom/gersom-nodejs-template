@@ -1,25 +1,26 @@
-// middlewares/errorHandler.js
-const { NotFoundError, ValidationError } = require('../utils/errors');
+// Custom error array
+const customErrors = require('../utils/errors');
 
 const errorHandler = (err, req, res, next) => {
-  console.error(err);
+  const isCustomError = Object.values(customErrors).some(ErrorType => err instanceof ErrorType);
 
-  if (err instanceof NotFoundError || err instanceof ValidationError) {
+  if (process.env.NODE_ENV === 'development') {
+    console.error(err.stack);
+    return res.status(isCustomError ? err.status : 500).json({
+      error: isCustomError ? err.message : 'An unexpected error occurred',
+      stack: err.stack
+    });
+  }
+
+  console.error(err.message);
+
+  if (isCustomError) {
     return res.status(err.status).json({
       error: err.message
     });
   }
 
-  // En entorno de desarrollo, incluye el mensaje de error completo
-  if (process.env.NODE_ENV === 'development') {
-    return res.status(500).json({
-      error: 'An unexpected error occurred',
-      message: err.message,
-      stack: err.stack
-    });
-  }
-
-  // En producción, envía un mensaje genérico
+  // In production, send a generic message for non-custom errors
   res.status(500).json({
     error: 'An unexpected error occurred'
   });

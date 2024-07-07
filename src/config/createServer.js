@@ -4,10 +4,10 @@ const setupRoutes = require('./setupRoutes');
 const errorHandler = require('@middlewares/errorHandler');
 const listen = require('@config/listen');
 
-function createServer() {
+async  function createServer() {
   const app = express();
   middlewares(app);
-  setupRoutes(app);
+  await setupRoutes(app);
   app.use(errorHandler);
   listen(app);
   return app;
