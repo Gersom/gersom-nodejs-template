@@ -1,0 +1,38 @@
+{
+  "name": "cashflow",
+  "version": "1.0.0",
+  "description": "cashflow",
+  "main": "./src/app.js",
+  "scripts": {
+    "dev": "nodemon ./src/app.js",
+    "start": "node ./src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gersom",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "module-alias": "^2.2.3",
+    "mongoose": "^8.4.5",
+    "morgan": "^1.10.0"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@src": "./src",
+    "@config": "./src/config",
+    "@controllers": "./src/controllers",
+    "@data": "./src/data",
+    "@handlers": "./src/handlers",
+    "@models": "./src/models",
+    "@routes": "./src/routes",
+    "@services": "./src/services",
+    "@storage": "./src/storage",
+    "@middlewares": "./src/middlewares",
+    "@utils": "./src/utils"
+  }
+}
