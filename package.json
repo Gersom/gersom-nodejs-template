@@ -1,7 +1,7 @@
 {
-  "name": "cashflow",
+  "name": "gersom-nodejs-boilerplate",
   "version": "1.0.0",
-  "description": "cashflow",
+  "description": "gersom nodejs boilerplate",
   "main": "./src/app.js",
   "scripts": {
     "dev": "nodemon ./src/app.js",
@@ -15,8 +15,10 @@
   },
   "dependencies": {
     "axios": "^1.7.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "helmet": "^7.1.0",
     "module-alias": "^2.2.3",
     "mongoose": "^8.4.5",
     "morgan": "^1.10.0"
@@ -28,11 +30,11 @@
     "@controllers": "./src/controllers",
     "@data": "./src/data",
     "@handlers": "./src/handlers",
+    "@middlewares": "./src/middlewares",
     "@models": "./src/models",
     "@routes": "./src/routes",
     "@services": "./src/services",
     "@storage": "./src/storage",
-    "@middlewares": "./src/middlewares",
     "@utils": "./src/utils"
   }
 }
