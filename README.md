@@ -1,6 +1,6 @@
 # NodeJs Template
 
-A template project for Node.js applications using Express and Mongoose.
+A template project for Node.js applications using Express and Mongoose/Sequelize.
 
 ## Project Structure
 
